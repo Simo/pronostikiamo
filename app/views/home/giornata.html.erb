@@ -1,0 +1,5 @@
+<% if @giocate.blank? %>
+	<%= render :partial => "giornata"%>
+<% else %>
+	<%= render :partial => "valutato"%>
+<% end %>
