@@ -1,0 +1,29 @@
+Inserisci i risultati della <%= @giornata.nome_breve %>ª giornata<br />
+
+<%= form_tag :action => :update_plus, :method => :post do %>
+		<ul>
+			<% @partite.each_with_index do |partite, index| %>
+				<li>
+					<table>
+					<%= fields_for "games[#{@partite_label[index].id}]", partite do |f| %>
+					  	<tr>
+					  	<div class="partita">
+							<td width="220px" align="right"><%=h @partite_label[index].home_team.sponsor  %></td>
+							<td width="20px" align="center"> - </td>
+							<td width="220px"><%=h @partite_label[index].away_team.sponsor %></td>
+						</div>
+						<td width="50px">
+						<div class="scommessa">
+							<%= f.radio_button :result, "1" %>  <%= f.radio_button :result, "2" %>
+						</div>
+						</td>
+						</tr>
+					<% end %>
+					</table>
+				</li>
+			<% end %><!-- each loop -->
+		</ul>
+	<div class="submit">
+		<%= submit_tag 'Inserisci'%>
+	</div>	
+<% end %>

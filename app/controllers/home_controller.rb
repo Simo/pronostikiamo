@@ -2,6 +2,11 @@ class HomeController < ApplicationController
   
   def index
   	@campionati = Champion.order(:priority)
+  	
+  	if current_user
+  	  @punti = Score.where(:user_id => current_user).sum('points')
+  	end
+  	
   end
   
   #def valuta

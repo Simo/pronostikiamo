@@ -1,0 +1,17 @@
+<div id="barraSX">	
+	<% unless user_signed_in? %>
+		<%= render '/devise/sessions/form' %>
+	<% else %>
+		<div class="campionati">
+			<ul>
+				<% @campionati.each do |f| %>
+					<li id="campionato_<%= f.id %>">
+						<%= link_to f.nome_campionato, admin_giornata_path(:cmp => "#{f.id}"), :remote => :true %>
+					</li>	
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+</div>
+	
+<div id="schedina"></div>

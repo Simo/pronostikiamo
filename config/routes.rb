@@ -29,6 +29,16 @@ PronosticiR3::Application.routes.draw do
   	 end
   end
   
+  match 'admin/valutato' => "admin#valutato", :as => "admin_valutato"
+    
+  match 'admin/giornata' => "admin#giornata", :as => "admin_giornata"
+  
+  resources :admin do
+  	 collection do
+  	 	post :update_plus
+  	 end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
