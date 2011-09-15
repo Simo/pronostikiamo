@@ -2580,3 +2580,868 @@ Completed 200 OK in 508ms (Views: 233.9ms | ActiveRecord: 20.5ms)
   [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 3.0, "times" = 3, "updated_at" = '2011-09-14 18:21:33.888582' WHERE "scores"."id" = 10[0m
   [1m[35mScore Load (0.4ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
   [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 4.0, "times" = 4, "updated_at" = '2011-09-14 18:21:33.894281' WHERE "scores"."id" = 10[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.3ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "bets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "game_id" integer, "round_id" integer, "champion_id" integer, "bid" varchar(255), "created_at" datetime, "updated_at" datetime, "user_id" integer, "result" varchar(255), "checked" boolean) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (18.5ms)[0m  CREATE TABLE "champions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome_campionato" varchar(255), "priority" integer, "ambito" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (7.6ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "round_id" integer, "home_team_id" integer, "away_team_id" integer, "codfip" integer, "result" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "legs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "desc" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.9ms)[0m  CREATE TABLE "rounds" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "champion_id" integer, "nome_turno" varchar(255), "nome_breve" varchar(255), "leg_id" integer, "data" date, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "scores" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "champion_id" integer, "points" float, "last_round" integer, "times" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "teams" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "sponsor" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (6.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110914163229')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110408085605')[0m
+  [1m[35mSQL (8.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110408085901')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110408090253')[0m
+  [1m[35mSQL (8.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110408090319')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110408090432')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110408090909')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110726090354')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110727133848')
+  [1m[36mSQL (13.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110810123409')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110912084105')
+  [1m[36mSQL (8.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110913142941')[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBets (20110408085605)
+Migrating to CreateChampions (20110408085901)
+Migrating to CreateGames (20110408090253)
+Migrating to CreateLegs (20110408090319)
+Migrating to CreateRounds (20110408090432)
+Migrating to CreateTeams (20110408090909)
+Migrating to DeviseCreateUsers (20110726090354)
+Migrating to AddUserIdToBet (20110727133848)
+Migrating to AddUsernameToUsers (20110810123409)
+Migrating to CreateScores (20110912084105)
+Migrating to AddResultToBet (20110913142941)
+Migrating to AddCheckedToBet (20110914163229)
+  [1m[35mSQL (0.3ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("bets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("champions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("games")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("legs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("rounds")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scores")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("teams")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBets (20110408085605)
+Migrating to CreateChampions (20110408085901)
+Migrating to CreateGames (20110408090253)
+Migrating to CreateLegs (20110408090319)
+Migrating to CreateRounds (20110408090432)
+Migrating to CreateTeams (20110408090909)
+Migrating to DeviseCreateUsers (20110726090354)
+Migrating to AddUserIdToBet (20110727133848)
+Migrating to AddUsernameToUsers (20110810123409)
+Migrating to CreateScores (20110912084105)
+Migrating to AddResultToBet (20110913142941)
+Migrating to AddCheckedToBet (20110914163229)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("bets")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("champions")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("games")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("legs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("rounds")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scores")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("teams")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBets (20110408085605)
+Migrating to CreateChampions (20110408085901)
+Migrating to CreateGames (20110408090253)
+Migrating to CreateLegs (20110408090319)
+Migrating to CreateRounds (20110408090432)
+Migrating to CreateTeams (20110408090909)
+Migrating to DeviseCreateUsers (20110726090354)
+Migrating to AddUserIdToBet (20110727133848)
+Migrating to AddUsernameToUsers (20110810123409)
+Migrating to CreateScores (20110912084105)
+Migrating to AddResultToBet (20110913142941)
+Migrating to AddCheckedToBet (20110914163229)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("bets")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("champions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("games")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("legs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("rounds")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scores")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("teams")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mBet Load (24.9ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE (checked is null)[0m
+  [1m[35mScore Load (0.4ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "points" = 5.0, "times" = 5, "updated_at" = '2011-09-15 19:18:20.386335' WHERE "scores"."id" = 10
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.394485' WHERE "bets"."id" = 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 6.0, "times" = 6, "updated_at" = '2011-09-15 19:18:20.439776' WHERE "scores"."id" = 10[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.443968' WHERE "bets"."id" = 2
+  [1m[36mScore Load (0.5ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 7, "updated_at" = '2011-09-15 19:18:20.449029' WHERE "scores"."id" = 10
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.492238' WHERE "bets"."id" = 3[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 7.0, "times" = 8, "updated_at" = '2011-09-15 19:18:20.497369' WHERE "scores"."id" = 10[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.501701' WHERE "bets"."id" = 4
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 9, "updated_at" = '2011-09-15 19:18:20.506802' WHERE "scores"."id" = 10
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.510493' WHERE "bets"."id" = 5[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 8.0, "times" = 10, "updated_at" = '2011-09-15 19:18:20.514866' WHERE "scores"."id" = 10[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.550334' WHERE "bets"."id" = 6
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 11, "updated_at" = '2011-09-15 19:18:20.555528' WHERE "scores"."id" = 10
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.560353' WHERE "bets"."id" = 7[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 12, "updated_at" = '2011-09-15 19:18:20.565137' WHERE "scores"."id" = 10[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.603633' WHERE "bets"."id" = 8
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (1, 2, 0.0, 0, 0, '2011-09-15 19:18:20.615079', '2011-09-15 19:18:20.615079')
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 1, "last_round" = 31, "updated_at" = '2011-09-15 19:18:20.659932' WHERE "scores"."id" = 11[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.663416' WHERE "bets"."id" = 9
+  [1m[36mScore Load (0.4ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 2, "updated_at" = '2011-09-15 19:18:20.705151' WHERE "scores"."id" = 11
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.738007' WHERE "bets"."id" = 10[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:18:20.743112' WHERE "scores"."id" = 11[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.747441' WHERE "bets"."id" = 11
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 1.0, "times" = 4, "updated_at" = '2011-09-15 19:18:20.752694' WHERE "scores"."id" = 11
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.792621' WHERE "bets"."id" = 12[0m
+  [1m[35mScore Load (0.5ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 2.0, "times" = 5, "updated_at" = '2011-09-15 19:18:20.804372' WHERE "scores"."id" = 11[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.839577' WHERE "bets"."id" = 13
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 3.0, "times" = 6, "updated_at" = '2011-09-15 19:18:20.844877' WHERE "scores"."id" = 11
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.849231' WHERE "bets"."id" = 14[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 4.0, "times" = 7, "updated_at" = '2011-09-15 19:18:20.854299' WHERE "scores"."id" = 11[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.858658' WHERE "bets"."id" = 15
+  [1m[36mScore Load (0.4ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 8, "updated_at" = '2011-09-15 19:18:20.863502' WHERE "scores"."id" = 11
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:18:20.903798' WHERE "bets"."id" = 16[0m
+  [1m[36mBet Load (2.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE (checked is null)[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (1, 1, 0.0, 0, 0, '2011-09-15 19:22:22.881004', '2011-09-15 19:22:22.881004')
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 1.0, "times" = 1, "last_round" = 1, "updated_at" = '2011-09-15 19:22:22.891875' WHERE "scores"."id" = 12[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:22.895328' WHERE "bets"."id" = 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mBet Load (2.7ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE (checked is null)[0m
+  [1m[35mScore Load (0.4ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "points" = 2.0, "times" = 2, "updated_at" = '2011-09-15 19:22:49.473467' WHERE "scores"."id" = 12
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:49.482030' WHERE "bets"."id" = 2[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:22:49.878696' WHERE "scores"."id" = 12[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:49.883270' WHERE "bets"."id" = 3
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 3.0, "times" = 4, "updated_at" = '2011-09-15 19:22:49.889878' WHERE "scores"."id" = 12
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:49.923036' WHERE "bets"."id" = 4[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 5, "updated_at" = '2011-09-15 19:22:49.930420' WHERE "scores"."id" = 12[0m
+  [1m[35mAREL (0.7ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:49.963277' WHERE "bets"."id" = 5
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 4.0, "times" = 6, "updated_at" = '2011-09-15 19:22:49.977334' WHERE "scores"."id" = 12
+  [1m[36mAREL (0.8ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.013040' WHERE "bets"."id" = 6[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 7, "updated_at" = '2011-09-15 19:22:50.026168' WHERE "scores"."id" = 12[0m
+  [1m[35mAREL (0.8ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.063016' WHERE "bets"."id" = 7
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 8, "updated_at" = '2011-09-15 19:22:50.071326' WHERE "scores"."id" = 12
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.112361' WHERE "bets"."id" = 8[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (1, 2, 0.0, 0, 0, '2011-09-15 19:22:50.120682', '2011-09-15 19:22:50.120682')[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 1, "last_round" = 31, "updated_at" = '2011-09-15 19:22:50.163290' WHERE "scores"."id" = 13
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.167308' WHERE "bets"."id" = 9[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "times" = 2, "updated_at" = '2011-09-15 19:22:50.174957' WHERE "scores"."id" = 13[0m
+  [1m[35mAREL (0.7ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.212264' WHERE "bets"."id" = 10
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.7ms)[0m  UPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:22:50.220444' WHERE "scores"."id" = 13
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.263120' WHERE "bets"."id" = 11[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 1.0, "times" = 4, "updated_at" = '2011-09-15 19:22:50.270167' WHERE "scores"."id" = 13[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.301313' WHERE "bets"."id" = 12
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 2.0, "times" = 5, "updated_at" = '2011-09-15 19:22:50.312093' WHERE "scores"."id" = 13
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.352065' WHERE "bets"."id" = 13[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 3.0, "times" = 6, "updated_at" = '2011-09-15 19:22:50.365784' WHERE "scores"."id" = 13[0m
+  [1m[35mAREL (0.7ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.401750' WHERE "bets"."id" = 14
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 4.0, "times" = 7, "updated_at" = '2011-09-15 19:22:50.415520' WHERE "scores"."id" = 13
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.452682' WHERE "bets"."id" = 15[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 8, "updated_at" = '2011-09-15 19:22:50.466552' WHERE "scores"."id" = 13[0m
+  [1m[35mAREL (0.8ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:22:50.502260' WHERE "bets"."id" = 16
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-15 21:24:25 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (226.7ms)
+Rendered home/index.html.erb within layouts/application (247.8ms)
+Completed 200 OK in 487ms (Views: 347.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2011-09-15 21:24:29 +0200
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (2.7ms)
+Rendered devise/registrations/new.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 137ms (Views: 66.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-09-15 21:24:42 +0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mA9lnZGLBR/xqUP65OFO3rVS9ZtsGqyHbff0YUWFjIQ=", "user"=>{"username"=>"argo", "email"=>"argo@mac.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'argo@mac.com') LIMIT 1
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "username") VALUES ('argo@mac.com', '$2a$10$AP28u5tz4iGehkyjd3hhauXpQkzEnRvmPJ5iiY9ttQtOZCQ.MeqGu', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2011-09-15 19:24:43.207877', '2011-09-15 19:24:43.207877', 'argo')[0m
+  [1m[35mAREL (1.5ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-09-15 19:24:43.220621', "current_sign_in_at" = '2011-09-15 19:24:43.220621', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2011-09-15 19:24:43.221086' WHERE "users"."id" = 2
+Redirected to http://localhost:3000/
+Completed 302 Found in 501ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-15 21:24:43 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.6ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (170.3ms)
+Completed 200 OK in 196ms (Views: 176.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/giornata?cmp=1" for 127.0.0.1 at 2011-09-15 21:24:49 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[36mRound Load (0.8ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-15') LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRound Load (0.3ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 1
+  [1m[36mGame Load (2.5ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mTeam Load (0.3ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1
+  [1m[36mTeam Load (0.3ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1
+  [1m[36mTeam Load (0.3ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.1ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1[0m
+  [1m[35mTeam Load (0.1ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1[0m
+  [1m[35mTeam Load (0.1ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)
+Rendered home/_giornata.html.erb (60.8ms)
+Rendered home/giornata.js.erb (69.0ms)
+Completed 200 OK in 440ms (Views: 122.6ms | ActiveRecord: 9.5ms)
+
+
+Started POST "/home/create_plus?method=post" for 127.0.0.1 at 2011-09-15 21:24:58 +0200
+  Processing by HomeController#create_plus as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mA9lnZGLBR/xqUP65OFO3rVS9ZtsGqyHbff0YUWFjIQ=", "bets"=>{"0"=>{"user_id"=>"2", "game_id"=>"1", "round_id"=>"1", "champion_id"=>"1", "bid"=>"1"}, "1"=>{"user_id"=>"2", "game_id"=>"2", "round_id"=>"1", "champion_id"=>"1", "bid"=>"2"}, "2"=>{"user_id"=>"2", "game_id"=>"3", "round_id"=>"1", "champion_id"=>"1", "bid"=>"2"}, "3"=>{"user_id"=>"2", "game_id"=>"4", "round_id"=>"1", "champion_id"=>"1", "bid"=>"1"}, "4"=>{"user_id"=>"2", "game_id"=>"5", "round_id"=>"1", "champion_id"=>"1", "bid"=>"2"}, "5"=>{"user_id"=>"2", "game_id"=>"6", "round_id"=>"1", "champion_id"=>"1", "bid"=>"1"}, "6"=>{"user_id"=>"2", "game_id"=>"7", "round_id"=>"1", "champion_id"=>"1", "bid"=>"1"}, "7"=>{"user_id"=>"2", "game_id"=>"8", "round_id"=>"1", "champion_id"=>"1", "bid"=>"1"}}, "commit"=>"Gioca", "method"=>"post"}
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1, 1, 1, '1', '2011-09-15 19:24:58.766494', '2011-09-15 19:24:58.766494', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (2, 1, 1, '2', '2011-09-15 19:24:58.782608', '2011-09-15 19:24:58.782608', 2, NULL, NULL)
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (3, 1, 1, '2', '2011-09-15 19:24:58.786352', '2011-09-15 19:24:58.786352', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (4, 1, 1, '1', '2011-09-15 19:24:58.789622', '2011-09-15 19:24:58.789622', 2, NULL, NULL)
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (5, 1, 1, '2', '2011-09-15 19:24:58.793350', '2011-09-15 19:24:58.793350', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (6, 1, 1, '1', '2011-09-15 19:24:58.797075', '2011-09-15 19:24:58.797075', 2, NULL, NULL)
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (7, 1, 1, '1', '2011-09-15 19:24:58.804636', '2011-09-15 19:24:58.804636', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (8, 1, 1, '1', '2011-09-15 19:24:58.808323', '2011-09-15 19:24:58.808323', 2, NULL, NULL)
+Redirected to http://localhost:3000/
+Completed 302 Found in 80ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-15 21:24:58 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.6ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (111.1ms)
+Completed 200 OK in 139ms (Views: 117.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/giornata?cmp=5" for 127.0.0.1 at 2011-09-15 21:25:01 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"5"}
+  [1m[36mRound Load (0.9ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '5' AND data > '2011-09-15') LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRound Load (0.3ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 129 AND user_id = 2)
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mGame Load (2.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mTeam Load (0.3ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 75 LIMIT 1
+  [1m[36mTeam Load (0.3ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 76 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.3ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 77 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 78 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 79 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 80 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 81 LIMIT 1[0m
+  [1m[35mTeam Load (0.1ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 82 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 83 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 84 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 85 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 86 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 87 LIMIT 1
+  [1m[36mTeam Load (0.1ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 88 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 129 AND user_id = 2)[0m
+Rendered home/_giornata.html.erb (17.5ms)
+Rendered home/giornata.js.erb (22.4ms)
+Completed 200 OK in 326ms (Views: 25.2ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/home/create_plus?method=post" for 127.0.0.1 at 2011-09-15 21:25:11 +0200
+  Processing by HomeController#create_plus as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mA9lnZGLBR/xqUP65OFO3rVS9ZtsGqyHbff0YUWFjIQ=", "bets"=>{"0"=>{"user_id"=>"2", "game_id"=>"1195", "round_id"=>"129", "champion_id"=>"5", "bid"=>"1"}, "1"=>{"user_id"=>"2", "game_id"=>"1196", "round_id"=>"129", "champion_id"=>"5", "bid"=>"1"}, "2"=>{"user_id"=>"2", "game_id"=>"1197", "round_id"=>"129", "champion_id"=>"5", "bid"=>"2"}, "3"=>{"user_id"=>"2", "game_id"=>"1198", "round_id"=>"129", "champion_id"=>"5", "bid"=>"1"}, "4"=>{"user_id"=>"2", "game_id"=>"1199", "round_id"=>"129", "champion_id"=>"5", "bid"=>"2"}, "5"=>{"user_id"=>"2", "game_id"=>"1200", "round_id"=>"129", "champion_id"=>"5", "bid"=>"1"}, "6"=>{"user_id"=>"2", "game_id"=>"1201", "round_id"=>"129", "champion_id"=>"5", "bid"=>"1"}}, "commit"=>"Gioca", "method"=>"post"}
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1195, 129, 5, '1', '2011-09-15 19:25:11.437706', '2011-09-15 19:25:11.437706', 2, NULL, NULL)
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1196, 129, 5, '1', '2011-09-15 19:25:11.454251', '2011-09-15 19:25:11.454251', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1197, 129, 5, '2', '2011-09-15 19:25:11.763244', '2011-09-15 19:25:11.763244', 2, NULL, NULL)
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1198, 129, 5, '1', '2011-09-15 19:25:11.768115', '2011-09-15 19:25:11.768115', 2, NULL, NULL)[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1199, 129, 5, '2', '2011-09-15 19:25:11.772714', '2011-09-15 19:25:11.772714', 2, NULL, NULL)
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1200, 129, 5, '1', '2011-09-15 19:25:11.777304', '2011-09-15 19:25:11.777304', 2, NULL, NULL)[0m
+  [1m[35mAREL (14.2ms)[0m  INSERT INTO "bets" ("game_id", "round_id", "champion_id", "bid", "created_at", "updated_at", "user_id", "result", "checked") VALUES (1201, 129, 5, '1', '2011-09-15 19:25:11.844697', '2011-09-15 19:25:11.844697', 2, NULL, NULL)
+Redirected to http://localhost:3000/
+Completed 302 Found in 501ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-15 21:25:11 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.6ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (113.3ms)
+Completed 200 OK in 141ms (Views: 119.8ms | ActiveRecord: 19.3ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mRound Load (0.3ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1
+  [1m[36mGame Load (1.4ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mRound Load (0.2ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1
+  [1m[36mGame Load (1.4ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.7ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:47.890455' WHERE "bets"."id" = 1[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:47.914954' WHERE "bets"."id" = 17
+  [1m[36mBet Load (0.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:47.920832' WHERE "bets"."id" = 2
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.233591' WHERE "bets"."id" = 18[0m
+  [1m[35mBet Load (0.9ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.238979' WHERE "bets"."id" = 3[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.278015' WHERE "bets"."id" = 19
+  [1m[36mBet Load (0.9ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.283722' WHERE "bets"."id" = 4
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.300335' WHERE "bets"."id" = 20[0m
+  [1m[35mBet Load (1.0ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.312732' WHERE "bets"."id" = 5[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.344724' WHERE "bets"."id" = 21
+  [1m[36mBet Load (0.9ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.350116' WHERE "bets"."id" = 6
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.389268' WHERE "bets"."id" = 22[0m
+  [1m[35mBet Load (0.9ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.395115' WHERE "bets"."id" = 7[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.399532' WHERE "bets"."id" = 23
+  [1m[36mBet Load (0.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.405012' WHERE "bets"."id" = 8
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:31:48.408847' WHERE "bets"."id" = 24[0m
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mRound Load (0.3ms)[0m  SELECT "rounds".* FROM "rounds" WHERE ("rounds"."id" BETWEEN 1 AND 2)
+  [1m[36mGame Load (1.4ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.8ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:42.898363' WHERE "bets"."id" = 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:42.923449' WHERE "bets"."id" = 17
+  [1m[36mBet Load (1.1ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.227974' WHERE "bets"."id" = 2
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.251143' WHERE "bets"."id" = 18[0m
+  [1m[35mBet Load (1.0ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.272260' WHERE "bets"."id" = 3[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.281201' WHERE "bets"."id" = 19
+  [1m[36mBet Load (1.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.287540' WHERE "bets"."id" = 4
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.306688' WHERE "bets"."id" = 20[0m
+  [1m[35mBet Load (0.9ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.312761' WHERE "bets"."id" = 5[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.326266' WHERE "bets"."id" = 21
+  [1m[36mBet Load (0.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.332035' WHERE "bets"."id" = 6
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.336124' WHERE "bets"."id" = 22[0m
+  [1m[35mBet Load (0.8ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.341745' WHERE "bets"."id" = 7[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.346025' WHERE "bets"."id" = 23
+  [1m[36mBet Load (0.7ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.350589' WHERE "bets"."id" = 8
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:33:43.373463' WHERE "bets"."id" = 24[0m
+  [1m[35mGame Load (3.2ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 2
+  [1m[36mBet Load (0.3ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 9[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 10
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 11[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 12
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 13[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 14
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 15[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 16
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mRound Load (0.3ms)[0m  SELECT "rounds".* FROM "rounds" WHERE ("rounds"."id" BETWEEN 1 AND 2)
+  [1m[36mGame Load (1.4ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.6ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mGame Load (1.7ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 2
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 9[0m
+  [1m[35mBet Load (0.1ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 10
+  [1m[36mBet Load (0.1ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 11[0m
+  [1m[35mBet Load (0.1ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 12
+  [1m[36mBet Load (0.1ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 13[0m
+  [1m[35mBet Load (0.1ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 14
+  [1m[36mBet Load (0.1ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 15[0m
+  [1m[35mBet Load (0.1ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 16
+  [1m[36mRound Load (1.1ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (id = 1 OR id = 2)[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mGame Load (1.3ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.6ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mBet Load (0.4ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mGame Load (1.8ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 2
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 9[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 10
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 11[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 12
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 13[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 14
+  [1m[36mBet Load (0.2ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 15[0m
+  [1m[35mBet Load (0.2ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 16
+  [1m[36mRound Load (1.1ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (id = 1 OR id = 2)[0m
+  [1m[36mRound Load (1.9ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (id = 1 OR id = 31)[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mGame Load (1.3ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.7ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mBet Load (0.4ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mBet Load (0.4ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mBet Load (0.4ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mBet Load (0.4ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mBet Load (0.5ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mBet Load (0.4ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mGame Load (1.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 241[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:47.880258' WHERE "bets"."id" = 9
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 242[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:47.906521' WHERE "bets"."id" = 10
+  [1m[36mBet Load (0.7ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 243[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.204538' WHERE "bets"."id" = 11
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 244[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.214975' WHERE "bets"."id" = 12
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 245[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.220047' WHERE "bets"."id" = 13
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 246[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.225300' WHERE "bets"."id" = 14
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 247[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.229833' WHERE "bets"."id" = 15
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 248[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:40:48.234732' WHERE "bets"."id" = 16
+  [1m[36mRound Load (1.1ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (id = 1 OR id = 31)[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mGame Load (1.4ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mBet Load (0.8ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 1
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.243290' WHERE "bets"."id" = 1[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.268827' WHERE "bets"."id" = 17
+  [1m[36mBet Load (1.1ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 2[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.286668' WHERE "bets"."id" = 2
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.310489' WHERE "bets"."id" = 18[0m
+  [1m[35mBet Load (0.9ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 3
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.322674' WHERE "bets"."id" = 3[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.327175' WHERE "bets"."id" = 19
+  [1m[36mBet Load (0.9ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 4[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.332802' WHERE "bets"."id" = 4
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.336791' WHERE "bets"."id" = 20[0m
+  [1m[35mBet Load (0.9ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 5
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.341515' WHERE "bets"."id" = 5[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.362763' WHERE "bets"."id" = 21
+  [1m[36mBet Load (1.0ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 6[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.374678' WHERE "bets"."id" = 6
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.384068' WHERE "bets"."id" = 22[0m
+  [1m[35mBet Load (0.8ms)[0m  SELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 7
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.389170' WHERE "bets"."id" = 7[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.392863' WHERE "bets"."id" = 23
+  [1m[36mBet Load (0.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 8[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.397829' WHERE "bets"."id" = 8
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "result" = '1', "updated_at" = '2011-09-15 19:59:13.421778' WHERE "bets"."id" = 24[0m
+  [1m[35mGame Load (1.3ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 241[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.429422' WHERE "bets"."id" = 9
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 242[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.455577' WHERE "bets"."id" = 10
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 243[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.459858' WHERE "bets"."id" = 11
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 244[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.474127' WHERE "bets"."id" = 12
+  [1m[36mBet Load (0.5ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 245[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.478525' WHERE "bets"."id" = 13
+  [1m[36mBet Load (0.7ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 246[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.483170' WHERE "bets"."id" = 14
+  [1m[36mBet Load (0.8ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 247[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.512270' WHERE "bets"."id" = 15
+  [1m[36mBet Load (0.6ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE "bets"."game_id" = 248[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "result" = '2', "updated_at" = '2011-09-15 19:59:13.530049' WHERE "bets"."id" = 16
+  [1m[36mBet Load (6.9ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE (checked is null)[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (1, 1, 0.0, 0, 0, '2011-09-15 19:59:13.569788', '2011-09-15 19:59:13.569788')[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 1.0, "times" = 1, "last_round" = 1, "updated_at" = '2011-09-15 19:59:13.580917' WHERE "scores"."id" = 14
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.584526' WHERE "bets"."id" = 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.4ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 2.0, "times" = 2, "updated_at" = '2011-09-15 19:59:13.690227' WHERE "scores"."id" = 14[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.694075' WHERE "bets"."id" = 2
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:59:13.701165' WHERE "scores"."id" = 14
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.723215' WHERE "bets"."id" = 3[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (1.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 3.0, "times" = 4, "updated_at" = '2011-09-15 19:59:13.732398' WHERE "scores"."id" = 14[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.762622' WHERE "bets"."id" = 4
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 5, "updated_at" = '2011-09-15 19:59:13.773097' WHERE "scores"."id" = 14
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.789679' WHERE "bets"."id" = 5[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 4.0, "times" = 6, "updated_at" = '2011-09-15 19:59:13.795689' WHERE "scores"."id" = 14[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.819056' WHERE "bets"."id" = 6
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 7, "updated_at" = '2011-09-15 19:59:13.849324' WHERE "scores"."id" = 14
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.862808' WHERE "bets"."id" = 7[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 8, "updated_at" = '2011-09-15 19:59:13.869608' WHERE "scores"."id" = 14[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.890050' WHERE "bets"."id" = 8
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (1, 2, 0.0, 0, 0, '2011-09-15 19:59:13.897731', '2011-09-15 19:59:13.897731')
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "times" = 1, "last_round" = 31, "updated_at" = '2011-09-15 19:59:13.919513' WHERE "scores"."id" = 15[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.945698' WHERE "bets"."id" = 9
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 2, "updated_at" = '2011-09-15 19:59:13.952617' WHERE "scores"."id" = 15
+  [1m[36mAREL (0.7ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:13.986078' WHERE "bets"."id" = 10[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:59:14.015429' WHERE "scores"."id" = 15[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.029630' WHERE "bets"."id" = 11
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "points" = 1.0, "times" = 4, "updated_at" = '2011-09-15 19:59:14.036074' WHERE "scores"."id" = 15
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.056773' WHERE "bets"."id" = 12[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 2.0, "times" = 5, "updated_at" = '2011-09-15 19:59:14.063594' WHERE "scores"."id" = 15[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.085975' WHERE "bets"."id" = 13
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "scores" SET "points" = 3.0, "times" = 6, "updated_at" = '2011-09-15 19:59:14.093570' WHERE "scores"."id" = 15
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.124175' WHERE "bets"."id" = 14[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 4.0, "times" = 7, "updated_at" = '2011-09-15 19:59:14.132157' WHERE "scores"."id" = 15[0m
+  [1m[35mAREL (0.8ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.164104' WHERE "bets"."id" = 15
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=1 AND champion_id=2)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 8, "updated_at" = '2011-09-15 19:59:14.193082' WHERE "scores"."id" = 15
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.207679' WHERE "bets"."id" = 16[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (2, 1, 0.0, 0, 0, '2011-09-15 19:59:14.214520', '2011-09-15 19:59:14.214520')[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "scores" SET "points" = 1.0, "times" = 1, "last_round" = 1, "updated_at" = '2011-09-15 19:59:14.246367' WHERE "scores"."id" = 16
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.250756' WHERE "bets"."id" = 17[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.3ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "times" = 2, "updated_at" = '2011-09-15 19:59:14.258592' WHERE "scores"."id" = 16[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.286534' WHERE "bets"."id" = 18
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.4ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:59:14.301178' WHERE "scores"."id" = 16
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.323742' WHERE "bets"."id" = 19[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.2ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "scores" SET "points" = 2.0, "times" = 4, "updated_at" = '2011-09-15 19:59:14.329978' WHERE "scores"."id" = 16[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.352426' WHERE "bets"."id" = 20
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 5, "updated_at" = '2011-09-15 19:59:14.359067' WHERE "scores"."id" = 16
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.379682' WHERE "bets"."id" = 21[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "points" = 3.0, "times" = 6, "updated_at" = '2011-09-15 19:59:14.387114' WHERE "scores"."id" = 16[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.408068' WHERE "bets"."id" = 22
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "points" = 4.0, "times" = 7, "updated_at" = '2011-09-15 19:59:14.414859' WHERE "scores"."id" = 16
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.435718' WHERE "bets"."id" = 23[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.4ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1[0m
+  [1m[35mScore Load (0.4ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=1)
+  [1m[36mAREL (1.5ms)[0m  [1mUPDATE "scores" SET "points" = 5.0, "times" = 8, "updated_at" = '2011-09-15 19:59:14.450358' WHERE "scores"."id" = 16[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.463562' WHERE "bets"."id" = 24
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 1 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "scores" ("user_id", "champion_id", "points", "last_round", "times", "created_at", "updated_at") VALUES (2, 5, 0.0, 0, 0, '2011-09-15 19:59:14.470497', '2011-09-15 19:59:14.470497')
+  [1m[36mAREL (0.7ms)[0m  [1mUPDATE "scores" SET "times" = 1, "last_round" = 129, "updated_at" = '2011-09-15 19:59:14.492145' WHERE "scores"."id" = 17[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.502145' WHERE "bets"."id" = 25
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 2, "updated_at" = '2011-09-15 19:59:14.509087' WHERE "scores"."id" = 17
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.524642' WHERE "bets"."id" = 26[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "scores" SET "times" = 3, "updated_at" = '2011-09-15 19:59:14.532317' WHERE "scores"."id" = 17[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.564342' WHERE "bets"."id" = 27
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.3ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1
+  [1m[36mScore Load (0.3ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "scores" SET "times" = 4, "updated_at" = '2011-09-15 19:59:14.578409' WHERE "scores"."id" = 17
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.602589' WHERE "bets"."id" = 28[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.2ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)
+  [1m[36mAREL (1.8ms)[0m  [1mUPDATE "scores" SET "times" = 5, "updated_at" = '2011-09-15 19:59:14.610254' WHERE "scores"."id" = 17[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.641420' WHERE "bets"."id" = 29
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1
+  [1m[36mScore Load (0.2ms)[0m  [1mSELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "scores" SET "times" = 6, "updated_at" = '2011-09-15 19:59:14.647499' WHERE "scores"."id" = 17
+  [1m[36mAREL (0.6ms)[0m  [1mUPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.669317' WHERE "bets"."id" = 30[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mChampion Load (0.4ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1[0m
+  [1m[35mScore Load (0.3ms)[0m  SELECT "scores".* FROM "scores" WHERE (user_id=2 AND champion_id=5)
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE "scores" SET "times" = 7, "updated_at" = '2011-09-15 19:59:14.677603' WHERE "scores"."id" = 17[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE "bets" SET "checked" = 't', "updated_at" = '2011-09-15 19:59:14.708464' WHERE "bets"."id" = 31
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mChampion Load (0.2ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1
