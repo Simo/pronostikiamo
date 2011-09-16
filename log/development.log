@@ -6081,3 +6081,1709 @@ ActionController::RoutingError (No route matches {:action=>"show", :controller=>
   app/controllers/admin_controller.rb:56:in `update_plus'
 
 Rendered /Users/elena/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 09:13:40 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (374.9ms)
+Rendered home/index.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 781ms (Views: 421.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 09:13:49 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uZUeWhSsKAV86v3/6gnkyJJe/vYDhpOnUI2g4GEAFu0=", "user"=>{"username"=>"simo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-09-15 20:15:42.864571', "current_sign_in_at" = '2011-09-16 07:13:49.722561', "sign_in_count" = 3, "updated_at" = '2011-09-16 07:13:49.722561' WHERE "users"."id" = 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 640ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 09:13:50 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 187ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=1" for 127.0.0.1 at 2011-09-16 09:13:54 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 1)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 1 AND user_id = 1)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 2 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 4 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 5 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 7 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 8 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1
+Rendered home/_valutato.html.erb (187.5ms)
+Rendered home/giornata.js.erb (203.1ms)
+Completed 200 OK in 328ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=2" for 127.0.0.1 at 2011-09-16 09:13:59 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"2"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '2' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 1)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 31 AND user_id = 1)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 241 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 17 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 24 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 242 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 19 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 28 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 243 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 22 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 30 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 244 LIMIT 1
+  [1m[36mTeam Load (15.6ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 23 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 31 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 245 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 25 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 21 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 246 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 26 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 18 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 247 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 27 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 29 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 248 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 32 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 20 LIMIT 1
+Rendered home/_valutato.html.erb (249.9ms)
+Rendered home/giornata.js.erb (249.9ms)
+Completed 200 OK in 422ms (Views: 249.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/giornata?cmp=2" for 127.0.0.1 at 2011-09-16 09:14:01 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"2"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '2' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 1)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 31 AND user_id = 1)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 241 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 17 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 24 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 242 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 19 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 28 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 243 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 22 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 30 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 244 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 23 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 31 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 245 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 25 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 21 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 246 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 26 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 18 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 247 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 27 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 29 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 248 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 32 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 20 LIMIT 1
+Rendered home/_valutato.html.erb (156.2ms)
+Rendered home/giornata.js.erb (156.2ms)
+Completed 200 OK in 312ms (Views: 171.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=3" for 127.0.0.1 at 2011-09-16 09:14:04 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"3"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '3' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 61 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 61 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 61 AND user_id = 1)[0m
+  [1m[35mBet Load (15.6ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 61 AND user_id = 1)
+  [1m[36mGame Load (15.6ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 481 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 33 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 34 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 482 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 35 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 36 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 483 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 37 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 38 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 484 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 39 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 40 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 485 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 41 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 42 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 486 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 43 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 44 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 487 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 45 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 46 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 488 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 47 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 48 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 489 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 49 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 50 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 490 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 51 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 52 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 491 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 53 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 54 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 492 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 55 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 56 LIMIT 1
+Rendered home/_valutato.html.erb (187.5ms)
+Rendered home/giornata.js.erb (187.5ms)
+Completed 200 OK in 375ms (Views: 156.2ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/giornata?cmp=4" for 127.0.0.1 at 2011-09-16 09:14:06 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"4"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '4' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 95 AND user_id = 1)
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 57 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 58 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 59 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 60 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 61 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 62 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 63 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 64 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 65 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 66 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 67 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 68 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 69 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 70 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 71 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 72 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 73 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 74 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 95 AND user_id = 1)[0m
+Rendered home/_giornata.html.erb (15.6ms)
+Rendered home/giornata.js.erb (31.2ms)
+Completed 200 OK in 391ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=6" for 127.0.0.1 at 2011-09-16 09:14:09 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"6"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '6' AND data > '2011-09-16') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 159 AND user_id = 1)[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 6 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 159[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 159
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 159[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 159
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 159[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 159
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 90 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 91 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 92 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 93 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 94 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 95 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 96 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 97 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 98 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 99 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 100 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 101 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 102 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 103 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 104 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 105 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 159 AND user_id = 1)[0m
+Rendered home/_giornata.html.erb (0.0ms)
+Rendered home/giornata.js.erb (31.2ms)
+Completed 200 OK in 375ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=5" for 127.0.0.1 at 2011-09-16 09:14:10 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"5"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '5' AND data > '2011-09-16') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 129 AND user_id = 1)[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" WHERE "champions"."id" = 5 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 75 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 76 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 77 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 78 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 79 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 80 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 81 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 82 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 83 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 84 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 85 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 86 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 87 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 88 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 129 AND user_id = 1)
+Rendered home/_giornata.html.erb (15.6ms)
+Rendered home/giornata.js.erb (15.6ms)
+Completed 200 OK in 406ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=3" for 127.0.0.1 at 2011-09-16 09:14:12 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"3"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '3' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (15.6ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 61 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 61 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 61 AND user_id = 1)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 61 AND user_id = 1)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 481 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 33 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 34 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 482 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 35 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 36 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 483 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 37 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 38 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 484 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 39 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 40 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 485 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 41 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 42 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 486 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 43 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 44 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 487 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 45 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 46 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 488 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 47 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 48 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 489 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 49 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 50 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 490 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 51 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 52 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 491 LIMIT 1[0m
+  [1m[35mTeam Load (15.6ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 53 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 54 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 492 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 55 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 56 LIMIT 1
+Rendered home/_valutato.html.erb (171.8ms)
+Rendered home/giornata.js.erb (187.5ms)
+Completed 200 OK in 359ms (Views: 171.8ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/giornata?cmp=1" for 127.0.0.1 at 2011-09-16 09:14:14 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 1)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 1 AND user_id = 1)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 2 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 4 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 5 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 7 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 8 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1
+Rendered home/_valutato.html.erb (125.0ms)
+Rendered home/giornata.js.erb (140.6ms)
+Completed 200 OK in 375ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 09:14:42 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 09:14:47 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered admin/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 156ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/giornata?cmp=1" for 127.0.0.1 at 2011-09-16 09:14:52 +0200
+  Processing by AdminController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-16') LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1[0m
+Rendered admin/_giornata.html.erb (78.1ms)
+Rendered admin/giornata.js.erb (93.8ms)
+Completed 200 OK in 141ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/giornata?cmp=2" for 127.0.0.1 at 2011-09-16 09:14:55 +0200
+  Processing by AdminController#giornata as JS
+  Parameters: {"cmp"=>"2"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '2' AND data > '2011-09-16') LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mGame Load (15.6ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 31[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 17 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 24 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 19 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 28 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 22 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 30 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 23 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 31 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 25 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 21 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 26 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 18 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 27 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 29 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 32 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 20 LIMIT 1[0m
+Rendered admin/_giornata.html.erb (109.4ms)
+Rendered admin/giornata.js.erb (109.4ms)
+Completed 200 OK in 156ms (Views: 93.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/giornata?cmp=3" for 127.0.0.1 at 2011-09-16 09:14:56 +0200
+  Processing by AdminController#giornata as JS
+  Parameters: {"cmp"=>"3"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '3' AND data > '2011-09-16') LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 61 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 61
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 61[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 33 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 34 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 35 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 36 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 37 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 38 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 39 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 40 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 41 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 42 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 43 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 44 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 45 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 46 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 47 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 48 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 49 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 50 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 51 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 52 LIMIT 1[0m
+  [1m[35mTeam Load (15.6ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 53 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 54 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 55 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 56 LIMIT 1[0m
+Rendered admin/_giornata.html.erb (109.4ms)
+Rendered admin/giornata.js.erb (125.0ms)
+Completed 200 OK in 203ms (Views: 109.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/giornata?cmp=5" for 127.0.0.1 at 2011-09-16 09:14:57 +0200
+  Processing by AdminController#giornata as JS
+  Parameters: {"cmp"=>"5"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '5' AND data > '2011-09-16') LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 129 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 129
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 129[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 75 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 76 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 77 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 78 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 79 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 80 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 81 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 82 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 83 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 84 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 85 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 86 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 87 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 88 LIMIT 1[0m
+Rendered admin/_giornata.html.erb (46.9ms)
+Rendered admin/giornata.js.erb (46.9ms)
+Completed 200 OK in 172ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/giornata?cmp=6" for 127.0.0.1 at 2011-09-16 09:14:58 +0200
+  Processing by AdminController#giornata as JS
+  Parameters: {"cmp"=>"6"}
+  [1m[35mRound Load (15.6ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '6' AND data > '2011-09-16') LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 159 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."round_id" = 159
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 159[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 90 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 91 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 92 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 93 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 94 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 96 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 97 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 98 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 99 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 100 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 101 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 102 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 103 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 104 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 105 LIMIT 1[0m
+Rendered admin/_giornata.html.erb (46.9ms)
+Rendered admin/giornata.js.erb (46.9ms)
+Completed 200 OK in 141ms (Views: 62.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 09:17:52 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 125ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 09:17:54 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uZUeWhSsKAV86v3/6gnkyJJe/vYDhpOnUI2g4GEAFu0="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 94ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 09:17:54 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (31.3ms)
+Rendered home/index.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 109ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-09-16 09:18:03 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (31.3ms)
+Rendered home/index.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/games" for 127.0.0.1 at 2011-09-16 09:18:11 +0200
+  Processing by GamesController#index as HTML
+  [1m[35mGame Load (703.2ms)[0m  SELECT "games".* FROM "games"
+Rendered games/index.html.erb within layouts/application (3093.9ms)
+Completed 200 OK in 4000ms (Views: 3156.4ms | ActiveRecord: 703.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (15.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBets (20110408085605)
+Migrating to CreateChampions (20110408085901)
+Migrating to CreateGames (20110408090253)
+Migrating to CreateLegs (20110408090319)
+Migrating to CreateRounds (20110408090432)
+Migrating to CreateTeams (20110408090909)
+Migrating to DeviseCreateUsers (20110726090354)
+Migrating to AddUserIdToBet (20110727133848)
+Migrating to AddUsernameToUsers (20110810123409)
+Migrating to CreateScores (20110912084105)
+Migrating to AddResultToBet (20110913142941)
+Migrating to AddCheckedToBet (20110914163229)
+Migrating to CreateRoles (20110916080612)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110916080612')
+Migrating to AddActiveToChampion (20110916080700)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "champions" ADD "active" boolean[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110916080700')
+Migrating to CreatePositions (20110916080921)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "positions" ("user_id" integer, "role_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110916080921')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("bets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("champions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("games")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("legs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("positions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("rounds")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scores")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("teams")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBets (20110408085605)
+Migrating to CreateChampions (20110408085901)
+Migrating to CreateGames (20110408090253)
+Migrating to CreateLegs (20110408090319)
+Migrating to CreateRounds (20110408090432)
+Migrating to CreateTeams (20110408090909)
+Migrating to DeviseCreateUsers (20110726090354)
+Migrating to AddUserIdToBet (20110727133848)
+Migrating to AddUsernameToUsers (20110810123409)
+Migrating to CreateScores (20110912084105)
+Migrating to AddResultToBet (20110913142941)
+Migrating to AddCheckedToBet (20110914163229)
+Migrating to CreateRoles (20110916080612)
+Migrating to AddActiveToChampion (20110916080700)
+Migrating to CreatePositions (20110916080921)
+Migrating to AddRoleToUser (20110916082050)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mALTER TABLE "users" ADD "role_id" integer DEFAULT 2[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110916082050')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("bets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("champions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("games")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("legs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("positions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("rounds")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scores")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("teams")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "positions" ON "roles".id = "positions".role_id WHERE (("positions".user_id = 1))
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "positions" ON "roles".id = "positions".role_id WHERE (("positions".user_id = 1))[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE "roles"."id" = 1 LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE "roles"."id" = 1 LIMIT 1[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+
+
+Started GET "/games" for 127.0.0.1 at 2011-09-16 11:20:42 +0200
+  Processing by GamesController#index as HTML
+  [1m[36mGame Load (1093.7ms)[0m  [1mSELECT "games".* FROM "games"[0m
+Rendered games/index.html.erb within layouts/application (4468.6ms)
+Completed 200 OK in 5922ms (Views: 4484.3ms | ActiveRecord: 1093.7ms)
+
+
+Started GET "/games" for 127.0.0.1 at 2011-09-16 11:21:04 +0200
+  Processing by GamesController#index as HTML
+  [1m[35mGame Load (468.7ms)[0m  SELECT "games".* FROM "games"
+Rendered games/index.html.erb within layouts/application (4781.1ms)
+Completed 200 OK in 5390ms (Views: 4796.8ms | ActiveRecord: 468.7ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:21:11 +0200
+  Processing by BetsController#index as HTML
+Completed   in 109ms
+
+NameError (uninitialized constant Ability::Cancan):
+  app/models/ability.rb:2:in `<class:Ability>'
+  app/models/ability.rb:1:in `<top (required)>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:21:19 +0200
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/_form.html.erb (187.5ms)
+Rendered devise/shared/_links.erb (0.0ms)
+Rendered devise/sessions/new.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 234ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:21:28 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nuxAfIrL0nYsIFj7j3DYGVrACui/JFUgkB+fFXtNxsY=", "user"=>{"username"=>"simo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-09-16 07:13:49.722561', "current_sign_in_at" = '2011-09-16 09:21:28.295513', "sign_in_count" = 4, "updated_at" = '2011-09-16 09:21:28.295513' WHERE "users"."id" = 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 547ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:21:28 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:21:33 +0200
+  Processing by BetsController#index as HTML
+Completed   in 31ms
+
+NameError (uninitialized constant Ability::Cancan):
+  app/models/ability.rb:2:in `<class:Ability>'
+  app/models/ability.rb:1:in `<top (required)>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:26:25 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (15.6ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 469ms (Views: 62.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:26:33 +0200
+  Processing by BetsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed   in 78ms
+
+NoMethodError (undefined method `role_id' for :user:Symbol):
+  app/models/user.rb:23:in `admin?'
+  app/models/ability.rb:5:in `initialize'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:28:05 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 437ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:28:12 +0200
+  Processing by BetsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBet Load (46.9ms)[0m  SELECT "bets".* FROM "bets"
+Rendered bets/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 297ms (Views: 140.6ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:28:16 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nuxAfIrL0nYsIFj7j3DYGVrACui/JFUgkB+fFXtNxsY="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 312ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:28:17 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (62.5ms)
+Rendered home/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:28:25 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Kwz5IkZp+WGbLw4tWzv7AYyBuNDeMK68Oh4eChF+mDE=", "user"=>{"username"=>"argo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2011-09-16 09:28:26.265925', "sign_in_count" = 2, "updated_at" = '2011-09-16 09:28:26.265925' WHERE "users"."id" = 2[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 437ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:28:26 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:28:30 +0200
+  Processing by BetsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed   in 94ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE ('t'='f')
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/utenti" for 127.0.0.1 at 2011-09-16 11:29:01 +0200
+
+ActionController::RoutingError (No route matches "/utenti"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/utenti/sbierti" for 127.0.0.1 at 2011-09-16 11:29:28 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"sbierti"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'sbierti' LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (0.0ms)
+Completed   in 62ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    1: <h2><%= @user.username %></h2>
+    2: <h5><%= @user.email %></h5>
+  app/views/user/show.html.erb:1:in `_app_views_user_show_html_erb__1054095755_17817000_116788340'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (31.2ms)
+
+
+Started GET "/utenti/1" for 127.0.0.1 at 2011-09-16 11:29:42 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = '1' LIMIT 1
+Rendered user/show.html.erb within layouts/application (0.0ms)
+Completed   in 78ms
+
+ActionView::Template::Error (undefined method `username' for nil:NilClass):
+    1: <h2><%= @user.username %></h2>
+    2: <h5><%= @user.email %></h5>
+  app/views/user/show.html.erb:1:in `_app_views_user_show_html_erb__1054095755_21535236_116788340'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/utenti/argo" for 127.0.0.1 at 2011-09-16 11:29:49 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"argo"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered user/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 78ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:29:55 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Kwz5IkZp+WGbLw4tWzv7AYyBuNDeMK68Oh4eChF+mDE="}
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 47ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:29:56 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (62.5ms)
+Rendered home/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 125ms (Views: 78.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:29:58 +0200
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/_form.html.erb (0.0ms)
+Rendered devise/shared/_links.erb (0.0ms)
+Rendered devise/sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 11:30:11 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+Rendered user/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:30:34 +0200
+  Processing by BetsController#index as HTML
+Completed   in 47ms
+
+NoMethodError (undefined method `role_id' for nil:NilClass):
+  app/models/ability.rb:5:in `initialize'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:34:11 +0200
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/_form.html.erb (203.1ms)
+Rendered devise/shared/_links.erb (0.0ms)
+Rendered devise/sessions/new.html.erb within layouts/application (203.1ms)
+Completed 200 OK in 250ms (Views: 234.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:34:21 +0200
+  Processing by BetsController#index as HTML
+Completed   in 484ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  [1m[36mBet Load (0.0ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE ('t'='f')[0m
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:36:53 +0200
+  Processing by BetsController#index as HTML
+Completed   in 78ms
+
+ActionView::MissingTemplate (Missing template /404.html with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]} in view paths "D:/Dati/Documenti/My Documents/Ws/pronostikiamo/app/views", "c:/Ruby192/lib/ruby/gems/1.9.1/gems/devise-1.4.5/app/views", "D:/Dati/Documenti/My Documents/Ws/pronostikiamo", "D:/"):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:37:06 +0200
+  Processing by BetsController#index as HTML
+Completed   in 78ms
+
+ActionView::MissingTemplate (Missing template bets/404.html with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]} in view paths "D:/Dati/Documenti/My Documents/Ws/pronostikiamo/app/views", "c:/Ruby192/lib/ruby/gems/1.9.1/gems/devise-1.4.5/app/views"):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:39:35 +0200
+  Processing by BetsController#index as HTML
+Completed   in 62ms
+
+ActionView::MissingTemplate (Missing template application/404.html with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]} in view paths "D:/Dati/Documenti/My Documents/Ws/pronostikiamo/app/views", "c:/Ruby192/lib/ruby/gems/1.9.1/gems/devise-1.4.5/app/views"):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:40:52 +0200
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/sessions/_form.html.erb (0.0ms)
+Rendered devise/shared/_links.erb (15.6ms)
+Rendered devise/sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:40:59 +0200
+  Processing by BetsController#index as HTML
+Completed   in 62ms
+
+ActionView::MissingTemplate (Missing template errors/error_404 with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]} in view paths "D:/Dati/Documenti/My Documents/Ws/pronostikiamo/app/views", "c:/Ruby192/lib/ruby/gems/1.9.1/gems/devise-1.4.5/app/views"):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:42:24 +0200
+  Processing by BetsController#index as HTML
+Completed   in 94ms
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE ('t'='f')
+
+NameError (undefined local variable or method `render_404' for #<BetsController:0x26107f8>):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:42:37 +0200
+  Processing by BetsController#index as HTML
+Completed   in 62ms
+
+NoMethodError (undefined method `model_name' for Fixnum:Class):
+  app/controllers/application_controller.rb:6:in `block in <class:ApplicationController>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+  [1m[36mBet Load (0.0ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE ('t'='f')[0m
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.9ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:42:52 +0200
+
+SyntaxError (D:/Dati/Documenti/My Documents/Ws/pronostikiamo/app/controllers/application_controller.rb:6: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END):
+  app/controllers/bets_controller.rb:1:in `<top (required)>'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:47:28 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (328.1ms)
+Rendered home/index.html.erb within layouts/application (359.4ms)
+Completed 200 OK in 672ms (Views: 375.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bets" for 127.0.0.1 at 2011-09-16 11:47:35 +0200
+  Processing by BetsController#index as HTML
+Completed   in 172ms
+Redirected to http://localhost:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:47:35 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (15.6ms)
+Rendered home/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:48:48 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yzopeaqxqw3qRaqDibLsYf3fVhyL/DvuyWDE1LfOoaE=", "user"=>{"username"=>"simo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:21:28.295513', "current_sign_in_at" = '2011-09-16 09:48:48.709395', "sign_in_count" = 5, "updated_at" = '2011-09-16 09:48:48.709395' WHERE "users"."id" = 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 484ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:48:49 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 11:48:54 +0200
+  Processing by AdminController#index as HTML
+Completed   in 16ms
+
+NameError (uninitialized constant Admin):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 11:49:17 +0200
+  Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered admin/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 156ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/champions" for 127.0.0.1 at 2011-09-16 11:49:54 +0200
+  Processing by ChampionsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions"
+Rendered champions/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 125ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:49:57 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yzopeaqxqw3qRaqDibLsYf3fVhyL/DvuyWDE1LfOoaE="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:49:57 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (46.9ms)
+Rendered home/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:50:03 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"m2S62rJRmGxji/UGqvlWVp+Xa+HskvhlERLC1Ku9b28=", "user"=>{"username"=>"argo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:28:26.265925', "current_sign_in_at" = '2011-09-16 09:50:04.074075', "sign_in_count" = 3, "updated_at" = '2011-09-16 09:50:04.074075' WHERE "users"."id" = 2[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 281ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:50:04 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 156ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/champions" for 127.0.0.1 at 2011-09-16 11:50:09 +0200
+  Processing by ChampionsController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Completed   in 78ms
+Redirected to http://localhost:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:50:09 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2[0m
+  [1m[35mChampion Load (15.6ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 172ms (Views: 15.6ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:51:30 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yzopeaqxqw3qRaqDibLsYf3fVhyL/DvuyWDE1LfOoaE="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:51:30 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (15.6ms)
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 109ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:51:34 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ad754AyAIyBIyNzxjFM/AkCqh3CNONM+3ZwRbUCuTm4=", "user"=>{"username"=>"argo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:50:04.074075', "current_sign_in_at" = '2011-09-16 09:51:34.783586', "sign_in_count" = 4, "updated_at" = '2011-09-16 09:51:34.783586' WHERE "users"."id" = 2[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 234ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:51:34 +0200
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 141ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=1" for 127.0.0.1 at 2011-09-16 11:51:37 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)[0m
+  [1m[35mBet Load (0.0ms)[0m  SELECT "bets".* FROM "bets" WHERE (round_id = 1 AND user_id = 2)
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 2 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 4 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 5 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 6 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 7 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 8 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1
+Rendered home/_valutato.html.erb (171.9ms)
+Rendered home/giornata.js.erb (187.5ms)
+Completed 200 OK in 297ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=2" for 127.0.0.1 at 2011-09-16 11:51:38 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"2"}
+  [1m[36mRound Load (15.6ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '2' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 2)
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 31[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 31[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 31
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 31[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 17 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 24 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 19 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 28 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 22 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 30 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 23 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 31 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 25 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 21 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 26 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 18 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 27 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 29 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 32 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 20 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 31 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 31 AND user_id = 2)
+Rendered home/_giornata.html.erb (15.6ms)
+Rendered home/giornata.js.erb (31.3ms)
+Completed 200 OK in 438ms (Views: 31.3ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/giornata?cmp=4" for 127.0.0.1 at 2011-09-16 11:51:39 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"4"}
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE (champion_id = '4' AND data > '2011-09-16') LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRound Load (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 95 AND user_id = 2)
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" WHERE "champions"."id" = 4 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "games" WHERE "games"."round_id" = 95
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."round_id" = 95[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 57 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 58 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 59 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 60 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 61 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 62 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 63 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 64 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 65 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 66 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 67 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 68 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 69 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 70 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 71 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 72 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 73 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 74 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 95 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 95 AND user_id = 2)[0m
+Rendered home/_giornata.html.erb (15.6ms)
+Rendered home/giornata.js.erb (15.6ms)
+Completed 200 OK in 359ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/teams" for 127.0.0.1 at 2011-09-16 11:51:46 +0200
+  Processing by TeamsController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed   in 141ms
+Redirected to http://localhost:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:51:46 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 172ms (Views: 31.3ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 11:51:57 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 109ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 11:52:49 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 63ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/argo" for 127.0.0.1 at 2011-09-16 11:52:55 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"argo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 63ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 11:53:03 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 78ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:53:06 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Ad754AyAIyBIyNzxjFM/AkCqh3CNONM+3ZwRbUCuTm4="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 47ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:53:06 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (15.6ms)
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 31.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:53:14 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e61PpEfg8SmjH9ILIEuNEJ2Hw+lxmZZ8f5fY7/7VonA=", "user"=>{"username"=>"argo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:51:34.783586', "current_sign_in_at" = '2011-09-16 09:53:15.087522', "sign_in_count" = 5, "updated_at" = '2011-09-16 09:53:15.087522' WHERE "users"."id" = 2
+Redirected to http://localhost:3000/
+Completed 302 Found in 281ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:53:15 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 2
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered home/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 203ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 11:53:25 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered user/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/giornata?cmp=1" for 127.0.0.1 at 2011-09-16 11:53:50 +0200
+  Processing by HomeController#giornata as JS
+  Parameters: {"cmp"=>"1"}
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE (champion_id = '1' AND data > '2011-09-16') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRound Load (0.0ms)[0m  SELECT "rounds".* FROM "rounds" WHERE "rounds"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "bets" WHERE (round_id = 1 AND user_id = 2)
+  [1m[36mBet Load (0.0ms)[0m  [1mSELECT "bets".* FROM "bets" WHERE (round_id = 1 AND user_id = 2)[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 1 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 13 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 5 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 2 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 14 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 10 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 3 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 15 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 4 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 3 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 7 LIMIT 1[0m
+  [1m[35mGame Load (15.6ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 5 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 6 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 16 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 6 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 8 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 9 LIMIT 1[0m
+  [1m[35mGame Load (0.0ms)[0m  SELECT "games".* FROM "games" WHERE "games"."id" = 7 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 11 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 4 LIMIT 1
+  [1m[36mGame Load (0.0ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = 8 LIMIT 1[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = 12 LIMIT 1
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = 2 LIMIT 1[0m
+Rendered home/_valutato.html.erb (125.0ms)
+Rendered home/giornata.js.erb (140.6ms)
+Completed 200 OK in 250ms (Views: 125.0ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 11:54:53 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e61PpEfg8SmjH9ILIEuNEJ2Hw+lxmZZ8f5fY7/7VonA="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 47ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:54:54 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (46.9ms)
+Rendered home/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 11:55:00 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C5enBMK4aXbwb8V47H5ipaFk3BSmGr8ZCadm6Y7XYcQ=", "user"=>{"username"=>"simo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:48:48.709395', "current_sign_in_at" = '2011-09-16 09:55:00.681577', "sign_in_count" = 6, "updated_at" = '2011-09-16 09:55:00.681577' WHERE "users"."id" = 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 234ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 11:55:00 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 156ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 11:55:07 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (46.9ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered admin/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 141ms (Views: 78.1ms | ActiveRecord: 46.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:00:11 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered admin/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 141ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:00:14 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered admin/index.html.erb within layouts/application (93.7ms)
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:00:27 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+Rendered admin/index.html.erb within layouts/application (62.5ms)
+Completed   in 125ms
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    12: 	<div id="header">
+    13: 		<div id="user_nav">  
+    14: 		  <% if user_signed_in? %>  
+    15: 		    Signed in as <%= link_to current_user.username, mostra_utente_path(current_user) %>. Punti: <%= punti %> -
+    16: 			Non sei tu? <%= link_to "Esci", destroy_user_session_path, :method => :delete %>  
+    17: 		  <% else %>  
+    18: 		    <%= link_to "Registrati", new_user_registration_path %> oppure  
+  app/controllers/application_controller.rb:6:in `punti'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__299409006_22136940_537321434'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:00:45 +0200
+  Processing by AdminController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mChampion Load (0.0ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+Rendered admin/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 172ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 12:00:51 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+  [1m[36mChampion Load (31.2ms)[0m  [1mSELECT "champions".* FROM "champions" ORDER BY priority[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+Rendered home/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 172ms (Views: 31.2ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/utenti/argo" for 127.0.0.1 at 2011-09-16 12:00:58 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"argo"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+Rendered user/show.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 109ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_out" for 127.0.0.1 at 2011-09-16 12:01:21 +0200
+  Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"C5enBMK4aXbwb8V47H5ipaFk3BSmGr8ZCadm6Y7XYcQ="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 78ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 12:01:21 +0200
+  Processing by HomeController#index as HTML
+Rendered devise/sessions/_form.html.erb (15.6ms)
+Rendered home/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 94ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:01:25 +0200
+  Processing by AdminController#index as HTML
+Rendered devise/sessions/_form.html.erb (31.2ms)
+Rendered admin/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-09-16 12:02:29 +0200
+  Processing by AdminController#index as HTML
+Rendered devise/sessions/_form.html.erb (15.6ms)
+Rendered admin/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-09-16 12:02:38 +0200
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B+Hs7Qu8YGFwMblnGlGKulL6nVeuIHnERhDB9AdRxO4=", "user"=>{"username"=>"simo", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-09-16 09:55:00.681577', "current_sign_in_at" = '2011-09-16 10:02:38.907648', "sign_in_count" = 7, "updated_at" = '2011-09-16 10:02:38.907648' WHERE "users"."id" = 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 297ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-16 12:02:39 +0200
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mChampion Load (0.0ms)[0m  SELECT "champions".* FROM "champions" ORDER BY priority
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+Rendered home/index.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 219ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/simo" for 127.0.0.1 at 2011-09-16 12:02:42 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"simo"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."username" = 'simo' LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1
+Rendered user/show.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 109ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/utenti/argo" for 127.0.0.1 at 2011-09-16 12:02:49 +0200
+  Processing by UserController#show as HTML
+  Parameters: {"id"=>"argo"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'argo' LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT SUM("scores"."points") AS sum_id FROM "scores" WHERE "scores"."user_id" = 1[0m
+Rendered user/show.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 156ms (Views: 125.0ms | ActiveRecord: 0.0ms)

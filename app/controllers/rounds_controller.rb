@@ -1,4 +1,7 @@
 class RoundsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     @rounds = Round.all
   end

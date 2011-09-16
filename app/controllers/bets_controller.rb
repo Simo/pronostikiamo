@@ -1,4 +1,7 @@
 class BetsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     @bets = Bet.all    
   end

@@ -1,4 +1,7 @@
 class ChampionsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     @champions = Champion.all
   end

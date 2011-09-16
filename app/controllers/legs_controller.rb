@@ -1,4 +1,7 @@
 class LegsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     @legs = Leg.all
   end

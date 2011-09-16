@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914163229) do
+ActiveRecord::Schema.define(:version => 20110916082050) do
 
   create_table "bets", :force => true do |t|
     t.integer  "game_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110914163229) do
     t.string   "ambito"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   create_table "games", :force => true do |t|
@@ -44,6 +45,19 @@ ActiveRecord::Schema.define(:version => 20110914163229) do
 
   create_table "legs", :force => true do |t|
     t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "positions", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110914163229) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.integer  "role_id",                               :default => 2
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

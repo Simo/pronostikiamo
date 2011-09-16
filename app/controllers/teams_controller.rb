@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     @teams = Team.all
   end
