@@ -1,11 +1,13 @@
-<div id="barraSX">	
+<div id="barraSX" class="span-7">
 	<% unless user_signed_in? %>
-		<%= render '/devise/sessions/form' %>
+		<div id="login" class="span-7 last">
+			<%= render '/devise/sessions/form' %>
+		</div>
 	<% else %>
-		<div class="campionati">
+		<div class="campionati" class="span-7 last">
 			<ul>
 				<% @campionati.each do |f| %>
-					<li id="campionato_<%= f.id %>">
+					<li id="campionato_<%= f.id %>" class="lista_campionati">
 						<%= link_to f.nome_campionato, giornata_path(:cmp => "#{f.id}"), :remote => :true %>
 					</li>	
 				<% end %>
@@ -14,4 +16,6 @@
 	<% end %>
 </div>
 	
-<div id="schedina"></div>
+<div id="schedina" class="span-16 last">
+	<h2>Inserisci il tuo pronostico per la giornata</h2>
+</div>

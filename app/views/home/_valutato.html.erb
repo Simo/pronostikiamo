@@ -1,14 +1,15 @@
 <h1>I tuoi pronostici per la giornata sono stati:</h1>
-
+<ul>
 <% @giocate.each do |f| %>
-	<ul>
+	
 		<li>
-			<div class="partita">
-				<%=h f.game.home_team.sponsor %><!-- <%=h f.game.home_team.nome %>--> - <%=h f.game.away_team.sponsor %><!--  <%=h f.game.away_team.nome %>-->
+			<div class="partita span-9">
+				<%=h f.game.home_team.sponsor %> - <%=h f.game.away_team.sponsor %>
 			</div>
-			<div class="scommessa">
+			<div class="scommessa span-3 last">
 				<%= f.bid %>
 			</div>
 		</li>	
-	</ul>
+	
 <%end%>
+</ul>

@@ -1,38 +1,69 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- The new doctype -->
 <html>
-<head>
-  <title>Pronostici</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js", "jquery.rails.js" %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-<div id="container">
-	
-	<div id="header">
-		<div id="user_nav">  
-		  <% if user_signed_in? %>  
-		    Signed in as <%= link_to current_user.username, mostra_utente_path(current_user) %>. Punti: <%= punti(current_user) %> -
-			Non sei tu? <%= link_to "Esci", destroy_user_session_path, :method => :delete %>  
-		  <% else %>  
-		    <%= link_to "Registrati", new_user_registration_path %> oppure  
-		    <%= link_to "Entra", new_user_session_path %>  
-		  <% end %>  
-		</div>
-	</div>
-	<div id="banner_notices">
-		<% if flash[:notice] %>
-			<% flash_messages %>
-		<% end %>
-	</div>
-	<div id="content">
-		<%= yield %>
-	</div>
-	
-	<div id="footer">
-		All rights reserved - Code & Design property of Simone Bierti
-	</div>
-	
-</div>
-</body>
+    <head>
+        
+        <title>Pronostici</title>
+  		<%= stylesheet_link_tag "styles" %>
+  		<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js", "jquery.rails.js", "jquery-ui-1.8.16.custom.min.js" %>
+  		<%= csrf_meta_tag %>
+        <!-- Internet Explorer HTML5 enabling code: -->
+        
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        
+        <style type="text/css">
+        .clear {
+          zoom: 1;
+          display: block;
+        }
+        </style>
+
+        
+        <![endif]-->
+        
+    </head>
+    
+    <body>
+    	
+    	<section id="page"> <!-- Defining the #page section with the section tag -->
+    
+            <header> <!-- Defining the header section of the page with the appropriate tag -->
+            
+                <hgroup>
+                    <h1>Pronostichiamo</h1>
+                    <h3>pronostici@baskettiamo.it</h3>
+                </hgroup>
+                                
+                <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
+                	<ul>
+                    <% if user_signed_in? %>
+		    			<p><%= link_to current_user.username, mostra_utente_path(current_user) %>
+		    			<%= punti(current_user) %> - <%= link_to "Esci", destroy_user_session_path, :method => :delete %></p>
+		  			<% else %>  
+		   			 	<li><%= link_to "Registrati", new_user_registration_path %></li>
+		    			<li><%= link_to "Entra", new_user_session_path %></li>  
+		  			<% end %>
+		  			</ul>
+                </nav>
+            
+            </header>
+            <div class="line"></div>
+            <section id="content"> <!-- A new section with the articles -->
+				<%= yield %>
+            </section>
+
+        <footer> <!-- Marking the footer section -->
+
+           <div class="line"></div>
+           
+           <p>Copyright 2011 - baskettiamo.it</p> <!-- Change the copyright notice -->
+           
+           <a href="#" class="up">Go UP</a>
+           <a href="#" class="by">Template by uglybytes.com</a>
+           
+
+        </footer>
+            
+		</section> <!-- Closing the #page section -->
+    </body>
 </html>

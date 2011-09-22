@@ -2,32 +2,24 @@ Inserisci i tuoi pronostici per la <%= @giornata.nome_breve %>ª giornata di <%=
 
 <%= form_tag :action => :create_plus, :method => :post do %>
 		<ul>
-			<% j = 0 %>
 			<% @bets.each_with_index do |bet, index| %>
 				<li>
-					<table>
 					<%= fields_for "bets[#{index}]", bet do |f| %>
 					  	<%= f.hidden_field :user_id %>
 					  	<%= f.hidden_field :game_id %>
 						<%= f.hidden_field :round_id %>
 						<%= f.hidden_field :champion_id %>
-					  	<tr>
-					  	<div class="partita">
-							<td width="220px" align="right"><%=h @squadre_casa_sponsor[j] %><!-- <%=h @squadre_casa[j]%>--></td><td width="20px" align="center"> - </td><td width="220px"><%=h @squadre_fuori_sponsor[j] %><!-- <%=h @squadre_fuori[j]%>--></td>
-						</div>
-						<td width="50px">
-						<div class="scommessa">
+					  	<div class="partita span-12">
+							<%=h @squadre_casa_sponsor[index] %> - <%=h @squadre_fuori_sponsor[index] %>
+							</div>
+						<div class="scommessa span-3 last">
 							<%= f.radio_button :bid, "1" %>  <%= f.radio_button :bid, "2" %>
 						</div>
-						</td>
-						</tr>
 					<% end %>
-					</table>
 				</li>
-			<% j = j + 1 %>
 			<% end %><!-- each loop -->
 		</ul>
-	<div class="submit">
+	<div class="submit prepend-9 span-3 last">
 		<%= submit_tag 'Gioca'%>
 	</div>	
 <% end %>
