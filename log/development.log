@@ -17114,3 +17114,5 @@ Started GET "/giornata?cmp=4" for 127.0.0.1 at 2011-09-22 16:22:32 +0200
 Rendered home/_giornata.html.erb (15.6ms)
 Rendered home/giornata.js.erb (31.2ms)
 Completed 200 OK in 312ms (Views: 31.2ms | ActiveRecord: 15.6ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
